@@ -3,10 +3,10 @@ const transporter = nodemailer.createTransport({
     service : 'Outlook',
     auth : {
         user : 'sreeja.madire@incture.com',
-        pass : 'INC01429@',
+        pass : '****',
     }
 })
- const sendemail = (maildetails)=>{
+ const sendemail =  (maildetails)=>{
     transporter.sendMail(maildetails , function(error,info){
          if(error){
             console.log("Error is "+ error);

@@ -61,17 +61,15 @@ router.post('/users/logoutAll',auth,async(req,res)=>{
 })
 
 router.post('/users', async (req, res) => {
-    console.log(req.body);
     const user = new User(req.body);
     try {
         await user.save();
-        sendWelcomeMail(user.email,user.name)
+         await sendWelcomeMail(user.email,user.name)
         const token = await user.generateAuthToken()
         // res.status(201).send(user);
         res.status(201).send({user,token});
 
     } catch (e) {
-        console.log(e);
         res.status(400).send(e);
     }
 })
